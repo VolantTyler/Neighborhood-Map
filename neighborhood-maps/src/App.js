@@ -12,14 +12,14 @@ class App extends Component {
     };
 }
 
-  componentWillMount() {
+  componentDidMount() {
     FourSquareAPI.search({
       near:"Chicago, IL",
       category: "4bf58dd8d48988d181941735", // museums
       radius: 800, 
       Limit: 40
     }).then(results => {
-      const [ venues ] = results.response;
+      const { venues } = results.response;
       const markers = venues.map(venue => {
         return {
           lat: venue.location.lat,
@@ -28,8 +28,8 @@ class App extends Component {
           isVisible: true,
         }
       })
-      this.setState([venues, markers]);
-      console.log(results);
+      this.setState({venues, markers});
+      console.log(results.response.venues);
     });
   };
   

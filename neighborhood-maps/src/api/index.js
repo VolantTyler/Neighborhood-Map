@@ -35,6 +35,7 @@ class Helper {
             const res = await fetch(`${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(urlPrams)}`, requestData);
             const results = await res.json();
             console.log('Success:', results);
+            return results;
         }
         catch (error) {
             return console.error('Error:', error);
